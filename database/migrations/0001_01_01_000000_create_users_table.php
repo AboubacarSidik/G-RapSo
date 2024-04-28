@@ -36,8 +36,8 @@ return new class extends Migration
         });
 
         Schema::create('sessions', function (Blueprint $table) {
-            // Changement du type string pour l'id par un type bigIncrements
-            $table->bigIncrements('id')->primary();
+            // Spécification d'une longueur pour l'index id
+            $table->string('id',191)->primary();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
