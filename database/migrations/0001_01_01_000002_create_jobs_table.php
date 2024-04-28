@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('queue')->index();
+            // Spécification d'une longueur pour l'index queue
+            $table->string('queue',191)->index();
             $table->longText('payload');
             $table->unsignedTinyInteger('attempts');
             $table->unsignedInteger('reserved_at')->nullable();
@@ -22,7 +23,8 @@ return new class extends Migration
         });
 
         Schema::create('job_batches', function (Blueprint $table) {
-            $table->string('id')->primary();
+            // Spécification d'une longueur pour l'index id
+            $table->string('id',191)->primary();
             $table->string('name');
             $table->integer('total_jobs');
             $table->integer('pending_jobs');
@@ -36,7 +38,8 @@ return new class extends Migration
 
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid')->unique();
+            // Spécification d'une longueur pour l'index uuid
+            $table->string('uuid',191)->unique();
             $table->text('connection');
             $table->text('queue');
             $table->longText('payload');
