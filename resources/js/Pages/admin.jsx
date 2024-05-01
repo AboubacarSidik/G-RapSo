@@ -1,6 +1,6 @@
 import PrimaryButton from '@/Components/PrimaryButton';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, Link  } from '@inertiajs/react';
 
 export default function Dashboard({ auth }) {
     return (
@@ -23,7 +23,12 @@ export default function Dashboard({ auth }) {
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Soumettre un rapport</p>
-                            <PrimaryButton className ="">Soumettre</PrimaryButton>
+                            <PrimaryButton className =""><Link href={route('reports.create')}>Soumettre</Link></PrimaryButton>
+                        </div>
+
+                        <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
+                            <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Répertoire des rapports</p>
+                            <PrimaryButton className =""><Link href={route('reports.index')}>Consulter</Link></PrimaryButton>
                         </div>
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">

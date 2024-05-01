@@ -29,24 +29,14 @@ class ReportController extends Controller
     // Stocke un nouveau rapport dans la base de données
     public function store(Request $request)
     {
-        // Validation des données
-        $validatedData = $request->validate([
-            'theme' => 'required|string|max:255',
-            'nom_entreprise' => 'nullable|string|max:255',
-            'nom_maitre_stage' => 'nullable|string|max:255',
-            'resume' => 'required|string',
-            'objectifs' => 'required|string',
-            'methodologie' => 'nullable|string',
-            'resultats' => 'nullable|string',
-            'conclusions' => 'required|string',
-            'date_soutenance' => 'required|date',
-        ]);
+        $newreport = new Report();
+        $newreport->fill($request->all());
+        $newreport->user_id = auth()->id();
+        $newreport->save();
 
-        // Crée un nouveau rapport dans la base de données avec les données validées
-        Report::create($validatedData);
-
+        $reports = Report::all();
         // Redirige l'utilisateur vers la liste des rapports après avoir créé le rapport
-        return Inertia::render('Reports/Index');
+        return Inertia::render('Reports/Index', ['reports' => $reports]);
     }
 
     // Affiche le formulaire pour éditer un rapport existant
@@ -94,13 +84,13 @@ class ReportController extends Controller
     public function destroy($id)
     {
         // Recherchez le rapport par son identifiant
-        $report = Report::findOrFail($id);
+        $reportdelete = Report::findOrFail($id);
 
         // Supprimez le rapport
-        $report->delete();
-
+        $reportdelete->delete();
+        $reports = Report::all();
         // Redirigez l'utilisateur vers une autre page, par exemple la liste des rapports
-        return redirect()->route('reports.index')->with('success', 'Report deleted successfully');
+        return Inertia::render('Reports/Index', ['reports' => $reports])->with('success', 'Report deleted successfully');
     }
 
     // Affiche un rapport spécifique

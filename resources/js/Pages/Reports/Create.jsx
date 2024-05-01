@@ -8,7 +8,6 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 const CreateReport = () => {
     const { data, setData, post, processing, errors, reset } = useForm({
-        user_id:'',
         theme: '',
         nom_entreprise: '',
         nom_maitre_stage: '',
@@ -22,7 +21,7 @@ const CreateReport = () => {
 
     useEffect(() => {
         return () => {
-            reset('user_id','theme', 'nom_entreprise', 'nom_maitre_stage', 'resume', 'objectifs', 'methodologie', 'resultats', 'conclusions', 'date_soutenance');
+            reset('theme', 'nom_entreprise', 'nom_maitre_stage', 'resume', 'objectifs', 'methodologie', 'resultats', 'conclusions', 'date_soutenance');
         };
     }, []);
 
