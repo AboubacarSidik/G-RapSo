@@ -23,7 +23,7 @@ class User extends Authenticatable
         'password',
         'photo',
         'classe_etudiant',
-        'role',
+        'role', // 0 = etudiant, 1 = enseignant, 2 = admin
 
     ];
 
@@ -48,5 +48,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function projects(){
+
+        return $this->belongsToMany('App\Http\Models\projects');
     }
 }
