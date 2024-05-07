@@ -14,6 +14,7 @@ class TrackingController extends Controller
         $upcoming = Tracking::upcoming();
         $past = Tracking::past();
 
+
         return Inertia::render('Track/Tracking', compact('upcoming', 'past'));
     }
 }

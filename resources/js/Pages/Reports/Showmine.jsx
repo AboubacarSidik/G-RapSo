@@ -1,9 +1,7 @@
-
-
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function ShowReport({ auth, success, report, tasks, queryParams }) {
+export default function showmine({ auth, success, report, tasks, queryParams }) {
   return (
     <AuthenticatedLayout
       user={auth.user}
@@ -78,6 +76,7 @@ export default function ShowReport({ auth, success, report, tasks, queryParams }
                 </div>
               </div>
               <Link className = "text-blue-500 py-3 mt-3" href={route('reports.edit', report.id)}>Edit</Link>
+    
             </div>
           </div>
         </div>

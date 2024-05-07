@@ -37,6 +37,37 @@ class ReportController extends Controller
         // return Inertia::render('Reports/Index', ['reports' => $reports]);
     }
 
+    public function myreport()
+    {
+        $myquery = Report::query();
+
+        // $sortField = request("sort_field", 'created_at');
+        // $sortDirection = request("sort_direction", "desc");
+
+        // if (request("name")) {
+        //     $query->where("name", "like", "%" . request("name") . "%");
+        // }
+        // if (request("status")) {
+        //     $query->where("status", request("status"));
+        // }
+            if($myquery->user_id == auth()->id())
+
+            {
+                $reports = $myquery->paginate(10)->onEachSide(1);
+            return inertia("Reports/Myreport", [
+            "reports" => ReportResource::Collection($reports),
+        ]);
+
+            }
+
+        // Récupère tous les rapports de la base de données
+        // $reports = Report::all();
+        // Retourne une vue (utilise le moteur de rendu Inertia) qui affiche la liste des rapports
+        // return Inertia::render('Reports/Index', ['reports' => $reports]);
+    }
+
+    
+
     // Affiche le formulaire pour créer un nouveau rapport
     public function create()
     {
@@ -119,4 +150,13 @@ class ReportController extends Controller
         // Retourne une vue (utilise le moteur de rendu Inertia) qui affiche les détails du rapport
         return Inertia::render('Reports/Show', ['report' => $report]);
     }
+
+     // Affiche un rapport spécifique
+     public function showmine($id)
+     {
+         // Récupère le rapport spécifique à afficher en fonction de son ID
+         $report = Report::findOrFail($id);
+         // Retourne une vue (utilise le moteur de rendu Inertia) qui affiche les détails du rapport
+         return Inertia::render('Reports/Showmine', ['report' => $report]);
+     }
 }

@@ -71,9 +71,11 @@ Route::middleware('auth')->group(function () {
 });
 /*Routes For Report */
 Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/reports/myreport', [ReportController::class, 'myreport'])->name('reports.myreport');
 Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
 Route::get('/reports/{id}/edit', [ReportController::class, 'edit'])->name('reports.edit');
 Route::get('/reports/{id}', [ReportController::class, 'show'])->name('reports.show');
+Route::get('/reports/{id}/showmine', [ReportController::class, 'showmine'])->name('reports.showmine');
 Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
 Route::put('/reports/{id}', [ReportController::class, 'update'])->name('reports.update');
 Route::get('/reports/{id}/delete', [ReportController::class, 'delete'])->name('reports.delete');

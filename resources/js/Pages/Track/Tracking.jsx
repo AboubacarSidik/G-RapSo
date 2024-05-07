@@ -1,8 +1,8 @@
 import React from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
+import  GuestLayout  from '@/Layouts/GuestLayout';
 import { Head, Link } from '@inertiajs/react';
 
-const Tracking = ({ upcoming, past }) => {
+const Tracking = ({ upcoming, past}) => {
     // Obtenez la date d'aujourd'hui
     const today = new Date().toLocaleDateString('fr-FR', {
         year: 'numeric',
@@ -11,6 +11,7 @@ const Tracking = ({ upcoming, past }) => {
     });
 
     return (
+       
         <GuestLayout>
             <Head title="Calendrier" />
 
@@ -51,6 +52,7 @@ const Tracking = ({ upcoming, past }) => {
                 </div>
             </div>
         </GuestLayout>
+
     );
 }
 

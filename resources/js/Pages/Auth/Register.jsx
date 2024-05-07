@@ -106,7 +106,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Mot de Passe" />
 
                     <TextInput
                         id="password"
@@ -123,7 +123,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
+                    <InputLabel htmlFor="password_confirmation" value="Confirmer le Mot de Passe" />
 
                     <TextInput
                         id="password_confirmation"
@@ -144,11 +144,11 @@ export default function Register() {
                         href={route('login')}
                         className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     >
-                        Already registered?
+                        Déjà inscrit ?
                     </Link>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
+                    <PrimaryButton className="ms-4 bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600" disabled={processing}>
+                        S'inscrire
                     </PrimaryButton>
                 </div>
             </form>

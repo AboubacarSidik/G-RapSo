@@ -18,22 +18,40 @@ export default function Dashboard({ auth }) {
                     <div className = "flex flex-row justify-center items-center">
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-60 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Créer un nouveau projet</p>
-                            <PrimaryButton className ="">Créer</PrimaryButton>
+                            <Link 
+                                href={route("project.create")}
+                                className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                            >
+                                    Créer
+                            </Link> 
+                            {/* <PrimaryButton className ="">Créer</PrimaryButton> */}
                         </div>
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Soumettre un rapport</p>
-                            <PrimaryButton className =""><Link href={route('reports.create')}>Soumettre</Link></PrimaryButton>
+                            {/* <PrimaryButton className =""><Link href={route('reports.create')}>Soumettre</Link></PrimaryButton> */}
+                            <Link 
+                                href={route("reports.create")}
+                                className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                            >
+                                    Soumettre
+                            </Link> 
                         </div>
 
-                        <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
+                        {/* <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Répertoire des rapports</p>
                             <PrimaryButton className =""><Link href={route('reports.index')}>Consulter</Link></PrimaryButton>
-                        </div>
+                        </div> */}
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Calendrier des soutenances</p>
-                            <PrimaryButton className ="">Consulter</PrimaryButton>
+                            {/* <PrimaryButton className ="">Consulter</PrimaryButton> */}
+                            <Link 
+                                href={route("tracking.index")}
+                                className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                            >
+                                    Consulter
+                            </Link> 
                         </div>
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
@@ -45,6 +63,17 @@ export default function Dashboard({ auth }) {
                                     Créer
                             </Link> 
                         </div>
+
+                        {/* <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
+                            <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Mes rapports</p>
+                            <Link 
+                                href={route("reports.myreport")}
+                                className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
+                            >
+                                    Consulter
+                            </Link> 
+                            {/* <PrimaryButton className =""><Link href={route('tracking.index')}>Consulter</Link></PrimaryButton> */}
+                        {/* </div> */} 
                     </div>
                     
                 </div>
