@@ -9,6 +9,8 @@ import { Head, Link, useForm } from '@inertiajs/react';
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
+        prenom:'',
+        classe_etudiant:'',
         email: '',
         password: '',
         password_confirmation: '',
@@ -30,13 +32,13 @@ export default function Register() {
         <GuestLayout>
             <Head title="S'inscrire" />
 
-            <div>
-                <p>Si vous êtes un Professeur, Merci de contacter un administrateur pour vous inscrire.</p>
+            <div className='py-3 text-red-500'>
+                <p>Si vous êtes un Professeur, Merci de contacter un administrateur pour vous inscrire. Email: admin@g-rapso.isge-bf.org</p>
             </div>
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="Nom" />
 
                     <TextInput
                         id="name"
@@ -50,6 +52,40 @@ export default function Register() {
                     />
 
                     <InputError message={errors.name} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="prenom" value="Prenom" />
+
+                    <TextInput
+                        id="prenom"
+                        name="prenom"
+                        value={data.prenom}
+                        className="mt-1 block w-full"
+                        autoComplete="prenom"
+                        isFocused={true}
+                        onChange={(e) => setData('prenom', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.prenom} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="classe_etudiant" value="Votre Classe" />
+
+                    <TextInput
+                        id="classe_etudiant"
+                        name="classe_etudiant"
+                        value={data.classe_etudiant}
+                        className="mt-1 block w-full"
+                        autoComplete="classe_etudiant"
+                        isFocused={true}
+                        onChange={(e) => setData('classe_etudiant', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.classe_etudiant} className="mt-2" />
                 </div>
 
                 <div className="mt-4">

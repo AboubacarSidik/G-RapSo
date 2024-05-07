@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Http\Models\project;
 
 class User extends Authenticatable
 {
@@ -50,8 +52,17 @@ class User extends Authenticatable
         ];
     }
 
-    public function projects(){
-
-        return $this->belongsToMany('App\Http\Models\projects');
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    
+    
 }
+

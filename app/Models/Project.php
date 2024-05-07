@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 // app/Models/Project.php
 
@@ -19,33 +20,19 @@ class Project extends Model
 
     protected $fillable = [
         'titre', 
-        'description', 
+        'description',
+        'status',
+        'equipe', 
         'date_debut', 
         'date_fin'
     ];
 
-    public function users()
+   
+
+    public function user_id()
     {
-        return $this->belongsToMany(User::class, 'project_user', 'project_id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
-
-    // public function project_user()
-    // {
-
-        
-
-    //     return $this->hasMany(project_user::class);
-    // }
-
-    // public function userId()
-    // {
-    //     return $this->belongsTo(project_user::class, 'user_id');
-    // }
-
-//     public function updatedBy()
-//     {
-//         return $this->belongsTo(User::class, 'updated_by');
-//     }
 }
 
 

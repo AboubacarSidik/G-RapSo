@@ -5,6 +5,7 @@ import { Head, Link, router } from "@inertiajs/react";
 
 
     
+// import { Head, Link  } from '@inertiajs/react';
 
 export default function Dashboard({ auth }) {
 
@@ -35,13 +36,19 @@ export default function Dashboard({ auth }) {
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Soumettre un rapport</p>
-                            <PrimaryButton className ="">Consulter</PrimaryButton>
+                            <PrimaryButton className =""><Link href={route('reports.create')}>Soumettre</Link></PrimaryButton>
+                        </div>
+
+                        <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
+                            <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Répertoire des rapports</p>
+                            <PrimaryButton className =""><Link href={route('reports.index')}>Consulter</Link></PrimaryButton>
                         </div>
 
                         <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-5 py-6 flex-col w-64 flex justify-center items-center">
                             <p className="px-6 py-5 text-gray-900 dark:text-gray-100">Calendrier des soutenances</p>
                             <PrimaryButton className ="" >Consulter</PrimaryButton>
                         </div>
+                        
                     </div>
                     
                 </div>

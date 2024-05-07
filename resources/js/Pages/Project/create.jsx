@@ -54,17 +54,26 @@ import { Head, Link, useForm } from "@inertiajs/react";
     // };
 
     export default function Create({ auth }) {
-        const { validatedData, setValidatedData, post, errors, reset } = useForm({
+        const { data, setData, post, errors, reset } = useForm({
           titre: "",
-          desciption: "",
+          description: "",
+          status: "",
+          equipe: "",
           date_debut: "",
           date_fin: "",
         });
 
+        useEffect(() => {
+            return () => {
+                reset('titre', 'description', 'status', 'equipe', 'date_debut', 'date_fin');
+            };
+        }, []);
+
+
     const onSubmit = (e) => {
         e.preventDefault();
 
-        post(route('/prof/project.store'), validatedData);
+        post(route('/prof/project.store'));
     };
 
     return (
@@ -96,12 +105,14 @@ import { Head, Link, useForm } from "@inertiajs/react";
                         id="titre"
                         type="text"
                         name="titre"
-                        value={validatedData?.titre}
+                        value={data.titre}
                         className="mt-1 block w-full"
                         autoComplete="username"
                         isFocused={true}
-                        onChange={(e) => setValidatedData('titre', e.target.value)}
+                        onChange={(e) => setData('titre', e.target.value)}
                     />
+
+                        <InputError message={errors.titre} className="mt-2" /> 
                   </div>
                   <div className="mt-4">
                     <InputLabel htmlFor="description" value="Description du Projet" />
@@ -109,21 +120,49 @@ import { Head, Link, useForm } from "@inertiajs/react";
                     <TextAreaInput
                       id="description"
                       name="description"
-                      value={validatedData?.description}
+                      value={data.description}
                       className="mt-1 block w-full"
-                      onChange={(e) => setValidatedData("description", e.target.value)}
-                    />
-    
-                    <InputError message={errors.name} className="mt-2" />
-                  </div>
-                  <div className="mt-4">
-                    <InputLabel
-                      htmlFor="project_description"
-                      value="Project Description"
+                      onChange={(e) => setData("description", e.target.value)}
                     />
     
                     <InputError message={errors.description} className="mt-2" />
                   </div>
+
+
+                  <div className="mt-4">
+                    <InputLabel htmlFor="equipe" value="Veuillez renseigner les participants au projet" />
+    
+                    <TextAreaInput
+                      id="equipe"
+                      name="equipe"
+                      value={data.equipe}
+                      className="mt-1 block w-full"
+                      onChange={(e) => setData("equipe", e.target.value)}
+                    />
+    
+                    <InputError message={errors.equipe} className="mt-2" />
+                  </div>
+                  
+
+                  <div className="mt-4">
+                <InputLabel htmlFor="status" value="Selectionnez le Statut du projet" />
+
+                <SelectInput
+                  name="status"
+                  id="status"
+                  className="mt-1 block w-full"
+                  onChange={(e) => setData("status", e.target.value)}
+                >
+                  <option value="">Selectionnez le statut</option>
+                  <option value="En attente">En attente</option>
+                  <option value="En cours">En cours</option>
+                  <option value="Terminé">Terminé</option>
+                </SelectInput>
+
+                <InputError message={errors.status} className="mt-2" />
+              </div>
+
+
                   <div className="mt-4">
                     <InputLabel
                       htmlFor="date_debut"
@@ -134,9 +173,9 @@ import { Head, Link, useForm } from "@inertiajs/react";
                       id="date_debut"
                       type="date"
                       name="date_debut"
-                      value={validatedData?.date_debut}
+                      value={data.date_debut}
                       className="mt-1 block w-full"
-                      onChange={(e) => setValidatedData("date_debut", e.target.value)}
+                      onChange={(e) => setData("date_debut", e.target.value)}
                     />
                     <InputError message={errors.date_debut} className="mt-2" />
                   </div>
@@ -151,9 +190,9 @@ import { Head, Link, useForm } from "@inertiajs/react";
                       id="date_fin"
                       type="date"
                       name="date_fin"
-                      value={validatedData?.date_fin}
+                      value={data.date_fin}
                       className="mt-1 block w-full"
-                      onChange={(e) => setValidatedData("date_debut", e.target.value)}
+                      onChange={(e) => setData("date_fin", e.target.value)}
                     />
                     <InputError message={errors.date_debut} className="mt-2" />
                   </div>
@@ -164,7 +203,7 @@ import { Head, Link, useForm } from "@inertiajs/react";
                     >
                       Annuler
                     </Link>
-                    <button className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
+                    <button type="submit" className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600">
                       Soumettre
                     </button>
                   </div>
